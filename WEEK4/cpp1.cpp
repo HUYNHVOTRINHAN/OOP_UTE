@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-printname();
+void printname();
 int main()
 {
 
