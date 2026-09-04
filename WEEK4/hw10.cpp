@@ -5,9 +5,6 @@ int dem_uoc(int n);
 
 int main()
 {
-
-   
-
     int n;
    
      do {
@@ -17,6 +14,7 @@ int main()
 
     cout << "so luong uoc cua n: " << dem_uoc(n) << endl;
     return 0;
+    
 }
 
 int dem_uoc(int n)
@@ -29,4 +27,5 @@ int dem_uoc(int n)
 
     return dem;
 }
+
 

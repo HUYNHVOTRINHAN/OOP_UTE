@@ -36,3 +36,5 @@ void tinhluythua(float x, int n)
 
     cout << "luy thua x mu n la: "<< tich;
 }
+
+
