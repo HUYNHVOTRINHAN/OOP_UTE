@@ -236,7 +236,7 @@ int main() {
     printf("Phone       : %s\n", ST_PHONE20.c_str());
     cout << endl;
 
-    printf("\033[1;33m");
+    printf("\033[1;93m");
     printf("======================================\n");
     printf("Total students: \033[1;31m20\033[0m   \n");
     printf("\033[1;33m");
