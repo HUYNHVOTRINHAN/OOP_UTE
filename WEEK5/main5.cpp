@@ -190,7 +190,7 @@ int main() {
   cout << "Longest pass streak: " << (int)max_mang(k, n) << " students" << endl
        << endl;
 
-  int h[5];
+  int h[10] = {0};
   for (int i = 0; i < n; i++) {
     if (0 <= a[i] && a[i] < 5)
       h[0]++;
@@ -200,32 +200,32 @@ int main() {
       h[2]++;
     else if (8 <= a[i] && a[i] < 9)
       h[3]++;
-    else if (9 <= a[i] && a[i] < 10)
+    else if (9 <= a[i] && a[i] <= 10)
       h[4]++;
   }
 
-  int v = 1;
-  cout << "===== SCORE DISTRIBUTION =====\n";
-  cout << "0 - <5    : ";
-  while (v <= h[0])
-    cout << "*";
-  cout << "         " << h[0] << endl;
-  cout << "5 - <6.5  : ";
-  while (v <= h[1])
-    cout << "*";
-  cout << "         " << h[1] << endl;
-  cout << "6.5 - <8  : ";
-  while (v <= h[2])
-    cout << "*";
-  cout << "         " << h[2] << endl;
-  cout << "8 - <9    : ";
-  while (v <= h[3])
-    cout << "*";
-  cout << "         " << h[3] << endl;
-  cout << "9 - <10   : ";
-  while (v <= h[4])
-    cout << "*";
-  cout << "         " << h[4] << endl;
+
+    cout << "===== SCORE DISTRIBUTION =====\n";
+    cout << "0 - <5    : ";
+    for (int v = 1; v <= h[0]; v++)
+      cout << "*";
+    cout << "         " << h[0] << endl;
+    cout << "5 - <6.5  : ";
+    for (int v = 1; v <= h[1]; v++)
+      cout << "*";
+    cout << "         " << h[1] << endl;
+    cout << "6.5 - <8  : ";
+    for (int v = 1; v <= h[2]; v++)
+      cout << "*";
+    cout << "         " << h[2] << endl;
+    cout << "8 - <9    : ";
+    for (int v = 1; v <= h[3]; v++)
+      cout << "*";
+    cout << "         " << h[3] << endl;
+    cout << "9 - <10   : ";
+    for (int v = 1; v <= h[4]; v++)
+      cout << "*";
+    cout << "         " << h[4] << endl;
 
   return 0;
 }
