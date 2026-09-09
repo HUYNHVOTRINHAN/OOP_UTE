@@ -1,5 +1,7 @@
 #include <cstdio>
 #include <iostream>
+#include <string.h>
+
 using namespace std;
 
 // kiểu cấu trúc
@@ -26,6 +28,8 @@ void max_quantity(Flower DS[], int N);
 void sum_quantity(Flower DS[], int N);
 // câu 6: average price
 void average_price(Flower DS[], int N);
+// câu 7: đếm xem mỗi loại có bao nhiêu hoa
+void cout_eachtype(Flower DS[], int N);
 
 int main() {
 
@@ -46,6 +50,7 @@ int main() {
   max_quantity(flowers, N);
   sum_quantity(flowers, N);
   average_price(flowers, N);
+  cout_eachtype(flowers, N);
 
   return 0;
 }
@@ -162,4 +167,29 @@ void average_price(Flower DS[], int N) {
   }
 
   cout << "the average price: " << sum / N << endl;
+}
+
+// câu 7: đếm xem mỗi loại có bao nhiêu hoa
+void cout_eachtype(Flower DS[], int N) {
+  for (int i = 0; i < N; i++) {
+    int tempt = 0; // giả sử biến chưa bị lặp
+    for (int j = 0; j < i; j++) {
+      if (strcmp(DS[i].type, DS[j].type) == 0) {
+        tempt = 1; // đã xuất hiện
+        break;
+      }
+    }
+
+    if (tempt == 1) {
+      continue;
+    } // bỏ hết lệnh dưới chạy lên vòng lặp i típ
+
+    int count = 0;
+    for (int j = 0; j < N; j++) {
+      if (strcmp(DS[i].type, DS[j].type) == 0)
+        count++;
+    }
+
+    printf("%-20s : %d\n", DS[i].type, count);
+  }
 }
