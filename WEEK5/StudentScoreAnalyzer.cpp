@@ -43,12 +43,14 @@ int main() {
   cout << endl;
 
   for (int i = 1; i <= n; i++) {
-    printf("Student %d: %.1f\n", i, a[i]);
+    printf("Student %d: %.1f ", i, a[i]);
     if (a[i] >= 5)
       cout << "-----> PASS\n";
     else
       cout << "-----> FAIL\n";
   }
 
+
+  
   return 0;
 }
