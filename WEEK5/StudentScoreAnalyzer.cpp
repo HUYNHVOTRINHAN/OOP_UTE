@@ -123,6 +123,19 @@ int main() {
       printf("Student %d: %.1f\n", i + 1, a[i]);
   }
 
+  cout << endl << endl;
+
+  float e;
+  cout << "Enter score to search: ";
+  cin >> e;
+  cout << endl;
+
+  cout << "Found at: \n";
+  for (int i = 0; i < n; i++) {
+    if (a[i] == e)
+      cout << "Student " << i + 1 << endl;
+  }
+
   return 0;
 }
 
