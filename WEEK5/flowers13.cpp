@@ -30,6 +30,8 @@ void sum_quantity(Flower DS[], int N);
 void average_price(Flower DS[], int N);
 // câu 7: đếm xem mỗi loại có bao nhiêu hoa
 void cout_eachtype(Flower DS[], int N);
+// câu 8: find all flowers of a given type
+void findflower_bytype(Flower DS[], int N);
 
 int main() {
 
@@ -51,6 +53,7 @@ int main() {
   sum_quantity(flowers, N);
   average_price(flowers, N);
   cout_eachtype(flowers, N);
+  findflower_bytype(flowers, N);
 
   return 0;
 }
@@ -191,5 +194,19 @@ void cout_eachtype(Flower DS[], int N) {
     }
 
     printf("%-20s : %d\n", DS[i].type, count);
+  }
+}
+
+// câu 8: find all flowers of a given type
+void findflower_bytype(Flower DS[], int N) {
+  cout << "Nhap type hoa can tim: ";
+  char a[50];
+  cin.getline(a, 50);
+  cout << "Hoa can tim: " << endl;
+
+  for (int i = 0; i < N; i++) {
+    if (strcmp(DS[i].type, a) == 0) {
+      cout << DS[i].name << endl;
+    }
   }
 }
