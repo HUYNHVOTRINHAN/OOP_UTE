@@ -97,7 +97,6 @@ int main() {
   int c, d;
   cout << "Enter minium score: ";
   cin >> c;
-  cout << endl;
   cout << "Enter maxium score: ";
   cin >> d;
   cout << endl;
@@ -108,7 +107,21 @@ int main() {
       dem2++;
   }
 
-  cout << "Students in range: " << dem2++;
+  cout << "Students in range: " << dem2++ << endl << endl;
+
+  float sum = 0;
+  for (int i = 0; i < n; i++) {
+    sum = sum + a[i];
+  }
+  float average = sum / n;
+
+  cout << "Average score: " << average << endl;
+
+  cout << "Student above average: " << endl;
+  for (int i = 0; i < n; i++) {
+    if (a[i] > average)
+      printf("Student %d: %.1f\n", i + 1, a[i]);
+  }
 
   return 0;
 }
