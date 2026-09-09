@@ -171,6 +171,23 @@ int main() {
            << endl;
   }
 
+  cout << endl << endl;
+
+  float k[100];
+  int dem5;
+  for (int j = 0; j < n; j++) {
+    dem5 = 0;
+    for (int i = 0; i < n; i++) {
+      if (a[i] >= 5)
+        dem5++;
+      else
+        break;
+    }
+    k[j] = dem5;
+  }
+
+  cout << "Longest pass streak: " << (int)max_mang(k, n) << endl;
+
   return 0;
 }
 
@@ -206,4 +223,3 @@ float min_mang(float a[], int n) {
   }
   return min;
 }
-//hihi

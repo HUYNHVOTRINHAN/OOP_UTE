@@ -171,6 +171,62 @@ int main() {
            << endl;
   }
 
+  cout << endl << endl;
+
+  float k[100];
+  int dem5;
+  int j = 0;
+
+  for (int i = 0; i < n; i++) {
+    if (a[i] >= 5)
+      dem5++;
+    else {
+      k[j] = dem5;
+      j++;
+      dem5 = 0;
+    }
+  }
+
+  cout << "Longest pass streak: " << (int)max_mang(k, n) << " students" << endl
+       << endl;
+
+  int h[5];
+  for (int i = 0; i < n; i++) {
+    if (0 <= a[i] && a[i] < 5)
+      h[0]++;
+    else if (5 <= a[i] && a[i] < 6.5)
+      h[1]++;
+    else if (6.5 <= a[i] && a[i] < 8)
+      h[2]++;
+    else if (8 <= a[i] && a[i] < 9)
+      h[3]++;
+    else if (9 <= a[i] && a[i] < 10)
+      h[4]++;
+  }
+
+  int v = 1;
+  cout << "===== SCORE DISTRIBUTION =====\n";
+  cout << "0 - <5    : ";
+  while (v <= h[0])
+    cout << "*";
+  cout << "         " << h[0] << endl;
+  cout << "5 - <6.5  : ";
+  while (v <= h[1])
+    cout << "*";
+  cout << "         " << h[1] << endl;
+  cout << "6.5 - <8  : ";
+  while (v <= h[2])
+    cout << "*";
+  cout << "         " << h[2] << endl;
+  cout << "8 - <9    : ";
+  while (v <= h[3])
+    cout << "*";
+  cout << "         " << h[3] << endl;
+  cout << "9 - <10   : ";
+  while (v <= h[4])
+    cout << "*";
+  cout << "         " << h[4] << endl;
+
   return 0;
 }
 
