@@ -1,6 +1,11 @@
 #include <iostream>
 #include <stdio.h>
 using namespace std;
+
+// tim số lớn/ bé nhất trong mảng dương
+float max_mang(float a[], int n);
+float min_mang(float a[], int n);
+
 int main() {
 
   int n;
@@ -18,7 +23,7 @@ int main() {
   } while (n < 2 || n > 20);
 
   float a[100];
-  a[0] = 0;
+  a[0] = -1;
 
   for (int i = 1; i <= n; i++) {
     cout << "Enter score for student " << i << ": ";
@@ -60,5 +65,33 @@ int main() {
   cout << "Failed : " << n - dem << " students\n";
   cout << "Pass rate: " << dem * 100 / n << "%" << endl;
 
+  cout << endl;
+  printf("Highest score: %.1f\n", max_mang(a, n));
+  printf("Lowest score : %.1f\n", min_mang(a, n));
+
+  cout << endl;
+  cout << "===== CLASSIFICATION =====\n";
+  cout << endl;
+
   return 0;
+}
+
+// tim số lớn nhất trong mảng
+float max_mang(float a[], int n) {
+  float max = a[1];
+  for (int i = 2; i <= n; i++) {
+    if (a[i] > max)
+      max = a[i];
+  }
+  return max;
+}
+
+// tim số bé nhất trong mảng
+float min_mang(float a[], int n) {
+  float min = a[1];
+  for (int i = 2; i <= n; i++) {
+    if (a[i] < min)
+      min = a[i];
+  }
+  return min;
 }
