@@ -136,6 +136,18 @@ int main() {
       cout << "Student " << i + 1 << endl;
   }
 
+  cout << endl << endl;
+
+  float f;
+  cout << "Enter score: ";
+  cin >> f;
+  int dem3 = 0;
+  for (int i = 0; i < n; i++) {
+    if (a[i] == f)
+      dem3++;
+  }
+  cout << "Score " << f << " appears " << dem3 << " times" << endl;
+
   return 0;
 }
 
