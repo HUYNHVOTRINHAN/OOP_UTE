@@ -73,6 +73,21 @@ int main() {
   cout << "===== CLASSIFICATION =====\n";
   cout << endl;
 
+  for (int i = 1; i <= n; i++) {
+    printf("Student %d: %.1f -> ", i, a[i]);
+    if (a[i] >= 9.0) {
+      cout << "Excellent\n";
+    } else if (a[i] >= 8.0) {
+      cout << "Very Good\n";
+    } else if (a[i] >= 6.5) {
+      cout << "Good\n";
+    } else if (a[i] >= 5.0) {
+      cout << "Average\n";
+    } else {
+      cout << "Fail\n";
+    }
+  }
+
   return 0;
 }
 
