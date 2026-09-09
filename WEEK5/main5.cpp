@@ -163,6 +163,14 @@ int main() {
   if (dem4 == 0)
     cout << "All students pass!" << endl;
 
+  cout << endl << endl;
+
+  for (int i = 0; i < n; i++) {
+    if (a[i + 1] > a[i])
+      cout << "Student " << i + 2 << " improved compared to Student " << i + 1
+           << endl;
+  }
+
   return 0;
 }
 
