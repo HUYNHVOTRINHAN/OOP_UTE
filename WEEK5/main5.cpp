@@ -23,10 +23,9 @@ int main() {
   } while (n < 2 || n > 20);
 
   float a[100];
-  a[0] = -1;
 
-  for (int i = 1; i <= n; i++) {
-    cout << "Enter score for student " << i << ": ";
+  for (int i = 0; i < n; i++) {
+    cout << "Enter score for student " << i + 1 << ": ";
 
     do {
       cin >> a[i];
@@ -39,8 +38,8 @@ int main() {
   cout << "==== STUDENT SCORES ====\n";
   cout << endl;
 
-  for (int i = 1; i <= n; i++) {
-    printf("Student %d: %.1f\n", i, a[i]);
+  for (int i = 0; i < n; i++) {
+    printf("Student %d: %.1f\n", i + 1, a[i]);
   }
 
   cout << endl;
@@ -48,8 +47,8 @@ int main() {
   cout << endl;
 
   int dem = 0;
-  for (int i = 1; i <= n; i++) {
-    printf("Student %d: %.1f ", i, a[i]);
+  for (int i = 0; i < n; i++) {
+    printf("Student %d: %.1f ", i + 1, a[i]);
     if (a[i] >= 5) {
       cout << "-----> PASS\n";
       dem++;
@@ -72,6 +71,27 @@ int main() {
   cout << endl;
   cout << "===== CLASSIFICATION =====\n";
   cout << endl;
+
+  int dem1 = 0;
+  for (int i = 0; i < n; i++) {
+    printf("Student %d: %.1f -> ", i + 1, a[i]);
+    if (a[i] >= 9.0) {
+      cout << "Excellent\n";
+      dem1++;
+    } else if (a[i] >= 8.0) {
+      cout << "Very Good\n";
+    } else if (a[i] >= 6.5) {
+      cout << "Good\n";
+    } else if (a[i] >= 5.0) {
+      cout << "Average\n";
+    } else {
+      cout << "Fail\n";
+    }
+  }
+
+  cout << endl;
+  cout << "Number of excellent students: " << dem1 << endl;
+  
 
   return 0;
 }
