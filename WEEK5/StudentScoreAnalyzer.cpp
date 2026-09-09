@@ -90,7 +90,19 @@ int main() {
   }
 
   cout << endl;
-  cout << "Number of excellent students: " << dem1 << endl;
+  cout << "Number of excellent students: " << dem1 << endl << endl;
+
+  int c, d;
+  cout << "Enter minium score: " << c << endl;
+  cout << "Enter maxium score: " << d << endl;
+
+  int dem2 = 0;
+  for (int i = 0; i < n; i++) {
+    if (c <= a[i] && a[i] <= d)
+      dem2++;
+  }
+
+  cout << "Students in range: " << dem2++;
 
   return 0;
 }
