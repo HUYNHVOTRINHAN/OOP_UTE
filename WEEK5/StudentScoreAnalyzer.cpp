@@ -141,12 +141,27 @@ int main() {
   float f;
   cout << "Enter score: ";
   cin >> f;
-  int dem3 = 0;
+  float dem3 = 0;
   for (int i = 0; i < n; i++) {
     if (a[i] == f)
       dem3++;
   }
   cout << "Score " << f << " appears " << dem3 << " times" << endl;
+
+  cout << endl << endl;
+  cout << "First failing student: " << endl;
+
+  int dem4 = 0;
+  for (int i = 0; i < n; i++) {
+    if (a[i] < 5) {
+      cout << "Student " << i + 1 << " : " << a[i] << endl;
+      dem4++;
+      break;
+    }
+  }
+
+  if (dem4 == 0)
+    cout << "All students pass!" << endl;
 
   return 0;
 }
