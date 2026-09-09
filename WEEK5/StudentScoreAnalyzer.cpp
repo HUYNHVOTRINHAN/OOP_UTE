@@ -206,3 +206,4 @@ float min_mang(float a[], int n) {
   }
   return min;
 }
+//hihi
