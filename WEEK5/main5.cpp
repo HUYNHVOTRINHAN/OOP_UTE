@@ -5,6 +5,7 @@ using namespace std;
 // tim số lớn/ bé nhất trong mảng dương
 float max_mang(float a[], int n);
 float min_mang(float a[], int n);
+float maxnhi_mang(float a[], int n);
 
 int main() {
 
@@ -66,6 +67,7 @@ int main() {
 
   cout << endl;
   printf("Highest score: %.1f\n", max_mang(a, n));
+  printf("Second Highest score: %.1f\n", maxnhi_mang(a, n));
   printf("Lowest score : %.1f\n", min_mang(a, n));
 
   cout << endl;
@@ -113,18 +115,31 @@ int main() {
 
 // tim số lớn nhất trong mảng
 float max_mang(float a[], int n) {
-  float max = a[1];
-  for (int i = 2; i <= n; i++) {
+  float max = a[0];
+  for (int i = 0; i < n; i++) {
     if (a[i] > max)
       max = a[i];
   }
   return max;
 }
 
+float maxnhi_mang(float a[], int n) {
+
+  float maxnhat = max_mang(a, n);
+  float maxnhi = -1;
+  for (int i = 0; i < n; i++) {
+    if (a[i] > maxnhi && a[i] != maxnhat) {
+      maxnhi = a[i];
+    }
+  }
+
+  return maxnhi;
+}
+
 // tim số bé nhất trong mảng
 float min_mang(float a[], int n) {
-  float min = a[1];
-  for (int i = 2; i <= n; i++) {
+  float min = a[0];
+  for (int i = 0; i < n; i++) {
     if (a[i] < min)
       min = a[i];
   }
