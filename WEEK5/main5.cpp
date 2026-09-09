@@ -42,15 +42,27 @@ int main() {
   cout << "==== RESULTS ====\n";
   cout << endl;
 
+  int dem=0;
   for (int i = 1; i <= n; i++) {
     printf("Student %d: %.1f ", i, a[i]);
     if (a[i] >= 5)
-      cout << "-----> PASS\n";
+      {
+        cout << "-----> PASS\n";
+        dem++;
+      }
     else
       cout << "-----> FAIL\n";
   }
 
+  cout << endl;
+  cout << "==== STATISTICS ====\n";
+  cout << endl;
 
+  cout << "Passed : " << dem << " students\n";
+  cout << "Failed : " << n - dem <<  " students\n";
+  cout << "Pass rate: " << dem*100/n << "%" << endl;
   
+
+
   return 0;
 }
