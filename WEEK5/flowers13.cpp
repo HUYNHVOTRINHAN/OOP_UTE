@@ -38,6 +38,8 @@ void search_name(Flower DS[], int N);
 void checkflower(Flower DS[], int N);
 // câu 11: count flowers (quantity <5)
 void count_flowers_lowerquantity(Flower DS[], int N);
+// câu 12: count flowers ( price range)
+void count_flowers_pricerange(Flower DS[], int N);
 
 int main() {
 
@@ -63,6 +65,7 @@ int main() {
   search_name(flowers, N);
   checkflower(flowers, N);
   count_flowers_lowerquantity(flowers, N);
+  count_flowers_pricerange(flowers, N);
 
   return 0;
 }
@@ -303,4 +306,30 @@ void count_flowers_lowerquantity(Flower DS[], int N) {
   }
 
   cout << "So hoa <5 la: " << dem << endl;
+}
+
+// câu 12: count flowers ( price range)
+void count_flowers_pricerange(Flower DS[], int N) {
+
+  int a, b;
+  int count;
+
+  do {
+    count = 0;
+    cout << "Khoang price muon nhap: ";
+    cin >> a >> b;
+
+    for (int i = 0; i < N; i++) {
+      if (a <= DS[i].price && DS[i].price <= b)
+        count++;
+    }
+
+    if (count != 0) {
+      cout << "So ten hoa trong khoang gia: " << count << endl;
+      break;
+    }
+    if (count == 0)
+      cout << "K co hoa trong khoang gia yeu cau, please nhap lai!\n";
+
+  } while (count == 0);
 }
