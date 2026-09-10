@@ -42,6 +42,8 @@ void count_flowers_lowerquantity(Flower DS[], int N);
 void count_flowers_pricerange(Flower DS[], int N);
 // câu 13: calculate total value (price x quantity)
 void total_value(Flower DS[], int N);
+// câu 14: find the most value flower
+void mostvalueflower(Flower DS[], int N);
 
 int main() {
 
@@ -69,6 +71,7 @@ int main() {
   count_flowers_lowerquantity(flowers, N);
   count_flowers_pricerange(flowers, N);
   total_value(flowers, N);
+  mostvalueflower(flowers, N);
 
   return 0;
 }
@@ -347,4 +350,21 @@ void total_value(Flower DS[], int N) {
   }
 
   cout << "Total value (price x quantity): " << sum << endl;
+}
+
+// câu 14: find the most value flower
+void mostvalueflower(Flower DS[], int N) {
+  float max = DS[0].price * DS[0].quantity;
+  for (int i = 0; i < N; i++) {
+    if (DS[i].price * DS[i].quantity > max) {
+      max = DS[i].price * DS[i].quantity;
+    }
+  }
+
+  cout << "The most valuable flower: " << endl;
+  for (int i = 0; i < N; i++) {
+    if (DS[i].price * DS[i].quantity == max) {
+      cout << DS[i].name << endl;
+    }
+  }
 }
