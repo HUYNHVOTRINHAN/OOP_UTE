@@ -52,7 +52,8 @@ void top3expesive_price(Flower DS[], int N);
 void keyword(Flower DS[], int N);
 // câu 19: calculate avearage quantity by type
 void avg_quanntity_bytype(Flower DS[], int N);
-//
+// câu 20: Generate a simple report
+void simple_report(Flower DS[], int N);
 
 int main() {
 
@@ -84,6 +85,7 @@ int main() {
   top3expesive_price(flowers, N);
   keyword(flowers, N);
   avg_quanntity_bytype(flowers, N);
+  simple_report(flowers, N);
 
   return 0;
 }
@@ -504,5 +506,45 @@ void avg_quanntity_bytype(Flower DS[], int N) {
     }
     avg = float(sum) / count;
     cout << DS[i].type << ": type nay có avg: " << avg;
+  }
+}
+
+// câu 20: Generate a simple report
+void simple_report(Flower DS[], int N) {
+  int total_quantity = 0;
+  float sum_price = 0;
+
+  for (int i = 0; i < N; i++) {
+    total_quantity = total_quantity + DS[i].quantity;
+    sum_price = sum_price + DS[i].price;
+  }
+
+  cout << "====== SIMPLE REPORT ======" << endl;
+  cout << "Total number of flowers: " << N << endl;
+  cout << "Total quantity: " << total_quantity << endl;
+  cout << "Average price: " << sum_price / N << endl;
+  cout << "Number of flowers in each type:" << endl;
+
+  for (int i = 0; i < N; i++) {
+    int daco = 0;
+
+    for (int j = 0; j < i; j++) {
+      if (strcmp(DS[i].type, DS[j].type) == 0) {
+        daco = 1;
+        break;
+      }
+    }
+
+    if (daco == 1)
+      continue;
+
+    int count = 0;
+
+    for (int j = 0; j < N; j++) {
+      if (strcmp(DS[i].type, DS[j].type) == 0)
+        count++;
+    }
+
+    cout << DS[i].type << ": " << count << endl;
   }
 }
