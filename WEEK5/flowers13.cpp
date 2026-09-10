@@ -36,6 +36,8 @@ void findflower_bytype(Flower DS[], int N);
 void search_name(Flower DS[], int N);
 // câu 10: check flowers
 void checkflower(Flower DS[], int N);
+// câu 11: count flowers (quantity <5)
+void count_flowers_lowerquantity(Flower DS[], int N);
 
 int main() {
 
@@ -60,6 +62,7 @@ int main() {
   findflower_bytype(flowers, N);
   search_name(flowers, N);
   checkflower(flowers, N);
+  count_flowers_lowerquantity(flowers, N);
 
   return 0;
 }
@@ -289,4 +292,15 @@ void checkflower(Flower DS[], int N) {
       cout << "NO! please try again!\n";
 
   } while (daco == 0);
+}
+
+// câu 11: count flowers (quantity <5)
+void count_flowers_lowerquantity(Flower DS[], int N) {
+  int dem = 0;
+  for (int i = 0; i < N; i++) {
+    if (DS[i].quantity < 5)
+      dem++;
+  }
+
+  cout << "So hoa <5 la: " << dem << endl;
 }
