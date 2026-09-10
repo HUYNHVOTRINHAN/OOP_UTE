@@ -34,6 +34,8 @@ void cout_eachtype(Flower DS[], int N);
 void findflower_bytype(Flower DS[], int N);
 // câu 9: search by name
 void search_name(Flower DS[], int N);
+// câu 10: check flowers
+void checkflower(Flower DS[], int N);
 
 int main() {
 
@@ -57,6 +59,7 @@ int main() {
   cout_eachtype(flowers, N);
   findflower_bytype(flowers, N);
   search_name(flowers, N);
+  checkflower(flowers, N);
 
   return 0;
 }
@@ -261,4 +264,29 @@ void search_name(Flower DS[], int N) {
       cout << "Type: " << DS[i].type << endl;
     }
   }
+}
+
+// câu 10: check flowers
+void checkflower(Flower DS[], int N) {
+
+  char a[50];
+  int daco;
+  do {
+    daco = 0;
+    cout << "Name cua flower: ";
+    cin.getline(a, 50);
+    cout << "Status: ";
+
+    for (int i = 0; i < N; i++) {
+      if (strcmp(DS[i].name, a) == 0) {
+        cout << "YES!\n";
+        daco = 1;
+        break;
+      }
+    }
+
+    if (daco == 0)
+      cout << "NO! please try again!\n";
+
+  } while (daco == 0);
 }
