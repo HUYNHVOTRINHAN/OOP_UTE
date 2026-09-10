@@ -32,6 +32,8 @@ void average_price(Flower DS[], int N);
 void cout_eachtype(Flower DS[], int N);
 // câu 8: find all flowers of a given type
 void findflower_bytype(Flower DS[], int N);
+// câu 9: search by name
+void search_name(Flower DS[], int N);
 
 int main() {
 
@@ -54,6 +56,7 @@ int main() {
   average_price(flowers, N);
   cout_eachtype(flowers, N);
   findflower_bytype(flowers, N);
+  search_name(flowers, N);
 
   return 0;
 }
@@ -171,42 +174,91 @@ void average_price(Flower DS[], int N) {
 
   cout << "the average price: " << sum / N << endl;
 }
-
 // câu 7: đếm xem mỗi loại có bao nhiêu hoa
 void cout_eachtype(Flower DS[], int N) {
   for (int i = 0; i < N; i++) {
-    int tempt = 0; // giả sử biến chưa bị lặp
+    int dadem = 0;
     for (int j = 0; j < i; j++) {
       if (strcmp(DS[i].type, DS[j].type) == 0) {
-        tempt = 1; // đã xuất hiện
+        dadem = 1;
         break;
       }
     }
 
-    if (tempt == 1) {
+    if (dadem == 1)
       continue;
-    } // bỏ hết lệnh dưới chạy lên vòng lặp i típ
 
     int count = 0;
     for (int j = 0; j < N; j++) {
-      if (strcmp(DS[i].type, DS[j].type) == 0)
+      if (strcmp(DS[j].type, DS[i].type) == 0) {
         count++;
+      }
     }
-
     printf("%-20s : %d\n", DS[i].type, count);
   }
 }
 
 // câu 8: find all flowers of a given type
 void findflower_bytype(Flower DS[], int N) {
-  cout << "Nhap type hoa can tim: ";
+
   char a[50];
-  cin.getline(a, 50);
-  cout << "Hoa can tim: " << endl;
+  int daco;
+
+  do {
+    daco = 0;
+    cout << "Nhap type hoa can tim: ";
+    cin.getline(a, 50);
+
+    for (int i = 0; i < N; i++) {
+      if (strcmp(DS[i].type, a) == 0) {
+        daco = 1;
+        break;
+      }
+    }
+
+    if (daco == 1) {
+      for (int i = 0; i < N; i++) {
+        if (strcmp(DS[i].type, a) == 0)
+          cout << DS[i].name << endl;
+      }
+    } else
+      cout << "Ko co hoa theo type da go, vui long nhap lai!\n";
+  } while (daco == 0);
+}
+
+// câu 9: search by name
+void search_name(Flower DS[], int N) {
+
+  char a[50];
+  int found;
+
+  do {
+    cout << "Nhap name cua flower: ";
+    cin.getline(a, 50);
+
+    found = 0; // giả sử chưa tìm thấy
+
+    for (int i = 0; i < N; i++) {
+      if (strcmp(DS[i].name, a) == 0) {
+        found = 1;
+        break;
+      }
+    }
+
+    if (found == 0) {
+      cout << "Vui long nhap dung ten hoa can tim!\n";
+    }
+
+  } while (found == 0);
 
   for (int i = 0; i < N; i++) {
-    if (strcmp(DS[i].type, a) == 0) {
-      cout << DS[i].name << endl;
+    if (strcmp(DS[i].name, a) == 0) {
+      cout << "Thong tin ten hoa can tim:\n";
+      cout << "No: " << DS[i].no << endl;
+      cout << "Name: " << DS[i].name << endl;
+      cout << "Price: " << DS[i].price << endl;
+      cout << "Quantity: " << DS[i].quantity << endl;
+      cout << "Type: " << DS[i].type << endl;
     }
   }
 }
