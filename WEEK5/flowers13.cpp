@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstdio>
 #include <iostream>
 #include <string.h>
@@ -44,6 +45,8 @@ void count_flowers_pricerange(Flower DS[], int N);
 void total_value(Flower DS[], int N);
 // câu 14: find the most value flower
 void mostvalueflower(Flower DS[], int N);
+// câu 17: find top 3 most expensive flowers
+void top3expesive_price(Flower DS[], int N);
 
 int main() {
 
@@ -72,7 +75,11 @@ int main() {
   count_flowers_pricerange(flowers, N);
   total_value(flowers, N);
   mostvalueflower(flowers, N);
+  top3expesive_price(flowers, N);
 
+
+
+  
   return 0;
 }
 
@@ -365,6 +372,69 @@ void mostvalueflower(Flower DS[], int N) {
   for (int i = 0; i < N; i++) {
     if (DS[i].price * DS[i].quantity == max) {
       cout << DS[i].name << endl;
+    }
+  }
+}
+
+// câu 17: find top 3 most expensive flowers
+void top3expesive_price(Flower DS[], int N) {
+
+  float max1 = DS[0].price;
+  for (int i = 0; i < N; i++) {
+    if (DS[i].price > max1)
+      max1 = DS[i].price;
+  }
+
+  cout << " top 1: " << endl;
+  for (int i = 0; i < N; i++) {
+    if (DS[i].price == max1)
+      cout << DS[i].name << endl;
+  }
+
+  float max2;
+  int foundmax2 = 0;
+  for (int i = 0; i < N; i++) {
+    if (DS[i].price != max1) {
+      max2 = DS[i].price;
+      foundmax2 = 1;
+      break;
+    }
+  }
+  if (foundmax2 == 0)
+    return;
+  else {
+    for (int i = 0; i < N; i++) {
+      if (DS[i].price > max2 && DS[i].price != max1)
+        max2 = DS[i].price;
+    }
+    cout << " top 2: " << endl;
+    for (int i = 0; i < N; i++) {
+      if (DS[i].price == max2)
+        cout << DS[i].name << endl;
+    }
+
+    float max3;
+    int foundmax3 = 0;
+    for (int i = 0; i < N; i++) {
+      if (DS[i].price != max1 && DS[i].price != max2) {
+        max3 = DS[i].price;
+        foundmax3 = 1;
+        break;
+      }
+    }
+
+    if (foundmax3 == 0)
+      return;
+    else {
+      for (int i = 0; i < N; i++) {
+        if (DS[i].price > max3 && DS[i].price != max1 && DS[i].price != max2)
+          max3 = DS[i].price;
+      }
+      cout << " top 3: " << endl;
+      for (int i = 0; i < N; i++) {
+        if (DS[i].price == max3)
+          cout << DS[i].name << endl;
+      }
     }
   }
 }
