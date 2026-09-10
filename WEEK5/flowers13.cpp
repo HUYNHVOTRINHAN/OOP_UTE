@@ -54,6 +54,8 @@ void keyword(Flower DS[], int N);
 void avg_quanntity_bytype(Flower DS[], int N);
 // câu 20: Generate a simple report
 void simple_report(Flower DS[], int N);
+// câu 15: sort flowers by price (tăng dần)
+void sort_price(Flower DS[], int N);
 
 int main() {
 
@@ -86,6 +88,8 @@ int main() {
   keyword(flowers, N);
   avg_quanntity_bytype(flowers, N);
   simple_report(flowers, N);
+
+  sort_price(flowers, N);
 
   return 0;
 }
@@ -546,5 +550,26 @@ void simple_report(Flower DS[], int N) {
     }
 
     cout << DS[i].type << ": " << count << endl;
+  }
+}
+
+// câu 15: sort flowers by price (tăng dần)
+void sort_price(Flower DS[], int N) {
+  for (int i = 0; i < N - 1; i++) {
+    for (int j = i + 1; j < N; j++) {
+      if (DS[i].price > DS[j].price) {
+        Flower temp = DS[i];
+        DS[i] = DS[j];
+        DS[j] = temp;
+      }
+    }
+  }
+
+  printf("====== SORT FLOWERS BY PRICE ======\n");
+  printf("%-12s|%-32s|%4s|%10s|%20s\n", "No", "Name", "Price", "Qty", "Type");
+
+  for (int i = 0; i < N; i++) {
+    printf("%-12d|%-32s|%4.1f|%10d|%20s\n", DS[i].no, DS[i].name, DS[i].price,
+           DS[i].quantity, DS[i].type);
   }
 }
