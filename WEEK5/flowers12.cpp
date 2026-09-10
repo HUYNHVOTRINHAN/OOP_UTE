@@ -68,7 +68,7 @@ void max_price(Flower DS[], int N) {
   }
 }
 
-// câu 4: find the cheapest flowers
+// câu 3: find the cheapest flowers
 void min_price(Flower DS[], int N) {
   float min = DS[0].price;
 
@@ -84,6 +84,67 @@ void min_price(Flower DS[], int N) {
     if (DS[i].price == min) {
       printf("%-12d|%-32s|%4.1f|%10d|%20s\n", DS[i].no, DS[i].name, DS[i].price,
              DS[i].quantity, DS[i].type);
+    }
+  }
+}
+
+// câu 4: đếm xem mỗi loại có bao nhiêu hoa
+void cout_eachtype(Flower DS[], int N) {
+  for (int i = 0; i < N; i++) {
+    int dadem = 0;
+    for (int j = 0; j < i; j++) {
+      if (strcmp(DS[i].type, DS[j].type) == 0) {
+        dadem = 1;
+        break;
+      }
+    }
+
+    if (dadem == 1)
+      continue;
+
+    int count = 0;
+    for (int j = 0; j < N; j++) {
+      if (strcmp(DS[j].type, DS[i].type) == 0) {
+        count++;
+      }
+    }
+    printf("%-20s : %d\n", DS[i].type, count);
+  }
+}
+
+// câu 5: search by name
+void search_name(Flower DS[], int N) {
+
+  char a[50];
+  int found;
+
+  do {
+    cout << "Nhap name cua flower: ";
+    cin.getline(a, 50);
+
+    found = 0; // giả sử chưa tìm thấy
+
+    for (int i = 0; i < N; i++) {
+      if (strcmp(DS[i].name, a) == 0) {
+        found = 1;
+        break;
+      }
+    }
+
+    if (found == 0) {
+      cout << "Vui long nhap dung ten hoa can tim!\n";
+    }
+
+  } while (found == 0);
+
+  for (int i = 0; i < N; i++) {
+    if (strcmp(DS[i].name, a) == 0) {
+      cout << "Thong tin ten hoa can tim:\n";
+      cout << "No: " << DS[i].no << endl;
+      cout << "Name: " << DS[i].name << endl;
+      cout << "Price: " << DS[i].price << endl;
+      cout << "Quantity: " << DS[i].quantity << endl;
+      cout << "Type: " << DS[i].type << endl;
     }
   }
 }
@@ -104,6 +165,8 @@ int main() {
   inflowers(flowers, N);
   max_price(flowers, N);
   min_price(flowers, N);
+  cout_eachtype(flowers, N);
+  search_name(flowers, N);
 
   return 0;
 }
