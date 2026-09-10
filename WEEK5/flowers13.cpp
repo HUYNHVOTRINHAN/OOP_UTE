@@ -40,6 +40,8 @@ void checkflower(Flower DS[], int N);
 void count_flowers_lowerquantity(Flower DS[], int N);
 // câu 12: count flowers ( price range)
 void count_flowers_pricerange(Flower DS[], int N);
+// câu 13: calculate total value (price x quantity)
+void total_value(Flower DS[], int N);
 
 int main() {
 
@@ -66,6 +68,7 @@ int main() {
   checkflower(flowers, N);
   count_flowers_lowerquantity(flowers, N);
   count_flowers_pricerange(flowers, N);
+  total_value(flowers, N);
 
   return 0;
 }
@@ -311,13 +314,14 @@ void count_flowers_lowerquantity(Flower DS[], int N) {
 // câu 12: count flowers ( price range)
 void count_flowers_pricerange(Flower DS[], int N) {
 
-  int a, b;
+  float a, b;
   int count;
 
   do {
     count = 0;
     cout << "Khoang price muon nhap: ";
     cin >> a >> b;
+    // xíu nữa cin.ignore() vì nó lưu xuống hàng khi ấn enter
 
     for (int i = 0; i < N; i++) {
       if (a <= DS[i].price && DS[i].price <= b)
@@ -332,4 +336,15 @@ void count_flowers_pricerange(Flower DS[], int N) {
       cout << "K co hoa trong khoang gia yeu cau, please nhap lai!\n";
 
   } while (count == 0);
+}
+
+// câu 13: calculate total value (price x quantity)
+void total_value(Flower DS[], int N) {
+
+  float sum = 0;
+  for (int i = 0; i < N; i++) {
+    sum = sum + (DS[i].price * DS[i].quantity);
+  }
+
+  cout << "Total value (price x quantity): " << sum << endl;
 }
