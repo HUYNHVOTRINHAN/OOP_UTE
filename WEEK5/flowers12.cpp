@@ -68,27 +68,25 @@ void max_price(Flower DS[], int N) {
   }
 }
 
-// // câu 3: find the cheapest flowers
-// void min_price(Flower DS[], int N) {
-//   float min = DS[0].price;
+// câu 4: find the cheapest flowers
+void min_price(Flower DS[], int N) {
+  float min = DS[0].price;
 
-//   for (int i = 0; i < N; i++) {
-//     if (min > DS[i].price)
-//       min = DS[i].price;
-//   }
+  for (int i = 0; i < N; i++) {
+    if (min > DS[i].price)
+      min = DS[i].price;
+  }
 
-//   printf("====== HOA CO GIA THAP NHAT ======\n");
-//   printf("%-12s|%-32s|%4s|%10s|%20s\n", "No", "Name", "Price", "Qty",
-//   "Type");
+  printf("====== HOA CO GIA THAP NHAT ======\n");
+  printf("%-12s|%-32s|%4s|%10s|%20s\n", "No", "Name", "Price", "Qty", "Type");
 
-//   for (int i = 0; i < N; i++) {
-//     if (DS[i].price == min) {
-//       printf("%-12d|%-32s|%4.1f|%10d|%20s\n", DS[i].no, DS[i].name,
-//       DS[i].price,
-//              DS[i].quantity, DS[i].type);
-//     }
-//   }
-// }
+  for (int i = 0; i < N; i++) {
+    if (DS[i].price == min) {
+      printf("%-12d|%-32s|%4.1f|%10d|%20s\n", DS[i].no, DS[i].name, DS[i].price,
+             DS[i].quantity, DS[i].type);
+    }
+  }
+}
 
 int main() {
 
@@ -105,6 +103,7 @@ int main() {
   nhapflowers(flowers, N);
   inflowers(flowers, N);
   max_price(flowers, N);
+  min_price(flowers, N);
 
   return 0;
 }
