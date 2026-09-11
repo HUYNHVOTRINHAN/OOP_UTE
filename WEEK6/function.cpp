@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <iostream>
 #include <string.h>
 using namespace std;
@@ -24,6 +25,12 @@ void showStudentID(char ID[50]) {
   cin.getline(ID, 50);
   cout << "Student ID: " << ID << endl;
 }
+void printStudentInfo(char name[50], int id) {
+  cout << "----------------------" << endl;
+  cout << "Name: " << name << endl;
+  cout << "ID  : " << id << endl;
+  cout << "----------------------" << endl;
+}
 
 int main() {
 
@@ -39,6 +46,9 @@ int main() {
 
   char ID[50];
   showStudentID(ID);
+
+  int id = atoi(ID);
+  printStudentInfo(name, id);
 
   return 0;
 }
