@@ -31,6 +31,15 @@ void printStudentInfo(char name[50], int id) {
   cout << "ID  : " << id << endl;
   cout << "----------------------" << endl;
 }
+void showScore(char name[50], double &score) {
+  cout << "Nhap diem: ";
+  cin >> score;
+  cin.ignore();
+
+  cout << "Student: " << name << endl;
+  cout << "Score  : " << score << endl;
+  cout << "Keep going!" << endl;
+}
 
 int main() {
 
@@ -49,6 +58,9 @@ int main() {
 
   int id = atoi(ID);
   printStudentInfo(name, id);
+
+  double score;
+  showScore(name, score);
 
   return 0;
 }
