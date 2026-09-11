@@ -40,6 +40,17 @@ void showScore(char name[50], double &score) {
   cout << "Score  : " << score << endl;
   cout << "Keep going!" << endl;
 }
+double calculateAverage(double score1, double score2) {
+  double sum = score1 + score2;
+  double avg = sum / 2.0;
+  return avg;
+}
+int maxValue(int a, int b) {
+  if (a < b)
+    return b;
+  else
+    return a;
+}
 
 int main() {
 
@@ -61,6 +72,16 @@ int main() {
 
   double score;
   showScore(name, score);
+
+  double math, english;
+  cout << "Enter math score   : ";
+  cin >> math;
+  cout << "Enter English score: ";
+  cin >> english;
+  double avg = calculateAverage(math, english);
+  cout << "Avg score = " << avg << endl;
+
+  cout << "Mon co diem lon hon: " << maxValue(math, english) << endl;
 
   return 0;
 }
