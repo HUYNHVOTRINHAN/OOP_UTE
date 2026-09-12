@@ -115,7 +115,6 @@ void sum_quantity(Flower DS[], int N) {
 
   cout << "the total quantity: " << sum << endl;
 }
-
 // câu 6: average price
 void average_price(Flower DS[], int N) {
   float sum = 0;
@@ -175,6 +174,27 @@ void findflower_bytype(Flower DS[], int N) {
       cout << "Ko co hoa theo type da go, vui long nhap lai!\n";
   } while (daco == 0);
 }
+// câu 9: search by name
+Flower search_name(Flower DS[], int N) {
+  char a[50];
+  int found = 0;
+  do {
+
+    cout << "Nhap name cua flowers: ";
+    cin.getline(a, 50);
+
+    for (int i = 0; i < N; i++) {
+      if (strcmp(DS[i].name, a) == 0) {
+        found = 1;
+        return DS[i];
+      }
+    }
+
+    if (found == 0)
+      cout << "K tim thay hoa theo ten go! Vu long nhap lai!\n";
+
+  } while (found == 0);
+}
 
 int main() {
 
@@ -197,6 +217,15 @@ int main() {
   average_price(flowers, N);
   cout_eachtype(flowers, N);
   findflower_bytype(flowers, N);
+
+  Flower x;
+  x = search_name(flowers, N);
+  cout << "In thong tin hoa: \n";
+  cout << "No      : " << x.no << endl;
+  cout << "Name    : " << x.name << endl;
+  cout << "Price   : " << x.price << endl;
+  cout << "Quantity: " << x.quantity << endl;
+  cout << "Type    : " << x.type << endl;
 
   return 0;
 }
