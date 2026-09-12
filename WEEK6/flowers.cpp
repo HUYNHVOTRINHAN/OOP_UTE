@@ -47,6 +47,26 @@ void inflowers(Flower DS[], int N) {
   }
   cout << endl << endl;
 }
+// câu 2: find the most expensive flowers
+void max_price(Flower DS[], int N) {
+  float max = DS[0].price;
+
+  for (int i = 1; i < N; i++) {
+    if (DS[i].price > max) {
+      max = DS[i].price;
+    }
+  }
+
+  printf("====== HOA CO GIA CAO NHAT ======\n");
+  printf("%-12s|%-32s|%4s|%10s|%20s\n", "No", "Name", "Price", "Qty", "Type");
+
+  for (int i = 0; i < N; i++) {
+    if (DS[i].price == max) {
+      printf("%-12d|%-32s|%4.1f|%10d|%20s\n", DS[i].no, DS[i].name, DS[i].price,
+             DS[i].quantity, DS[i].type);
+    }
+  }
+}
 
 int main() {
 
@@ -62,6 +82,7 @@ int main() {
   cin.ignore();
   nhapflowers(flowers, N);
   inflowers(flowers, N);
+  max_price(flowers, N);
 
   return 0;
 }
