@@ -283,25 +283,40 @@ void mostvalueflower(Flower DS[], int N) {
   }
 }
 // câu 15: sort flowers by price (tăng dần)
-void sort_price(Flower DS[], int N){
+void sort_price(Flower DS[], int N) {
 
-    for (int i=0;i<N-1;i++)
-    {
-      for (int j=0;j<N;j++)
-        if (DS[i].price > DS[j].price)
-          swap(DS[i].price,DS[j].price);
-    }
+  for (int i = 0; i < N - 1; i++) {
+    for (int j = 0; j < N; j++)
+      if (DS[i].price > DS[j].price)
+        swap(DS[i].price, DS[j].price);
+  }
 
-    printf("====== SORT FLOWERS BY PRICE ======\n");
-    printf("%-12s|%-32s|%4s|%10s|%20s\n", "No", "Name", "Price", "Qty", "Type");
+  printf("====== SORT FLOWERS BY PRICE ======\n");
+  printf("%-12s|%-32s|%4s|%10s|%20s\n", "No", "Name", "Price", "Qty", "Type");
 
-    for (int i = 0; i < N; i++) {
-      printf("%-12d|%-32s|%4.1f|%10d|%20s\n", DS[i].no, DS[i].name, DS[i].price,
-            DS[i].quantity, DS[i].type);
-    }
+  for (int i = 0; i < N; i++) {
+    printf("%-12d|%-32s|%4.1f|%10d|%20s\n", DS[i].no, DS[i].name, DS[i].price,
+           DS[i].quantity, DS[i].type);
+  }
 }
 
+// câu 16: sort flowers name AZ
+void sort_name(Flower DS[], int N) {
+  for (int i = 0; i < N - 1; i++) {
+    for (int j = i + 1; j < N; j++) {
+      if (strcmp(DS[i].name, DS[j].name) > 0)
+        swap(DS[i].name, DS[j].name);
+    }
+  }
 
+  printf("====== SORT FLOWERS BY NAME ======\n");
+  printf("%-12s|%-32s|%4s|%10s|%20s\n", "No", "Name", "Price", "Qty", "Type");
+
+  for (int i = 0; i < N; i++) {
+    printf("%-12d|%-32s|%4.1f|%10d|%20s\n", DS[i].no, DS[i].name, DS[i].price,
+           DS[i].quantity, DS[i].type);
+  }
+}
 
 int main() {
 
@@ -339,6 +354,7 @@ int main() {
   count_flowers_pricerange(flowers, N);
   total_value(flowers, N);
   mostvalueflower(flowers, N);
+  sort_name(flowers, N);
 
   return 0;
 }
