@@ -195,6 +195,40 @@ Flower search_name(Flower DS[], int N) {
 
   } while (found == 0);
 }
+// câu 10: check flowers
+void checkflower(Flower DS[], int N) {
+
+  char a[50];
+  int daco;
+  do {
+    daco = 0;
+    cout << "Name cua flower: ";
+    cin.getline(a, 50);
+    cout << "Status: ";
+
+    for (int i = 0; i < N; i++) {
+      if (strcmp(DS[i].name, a) == 0) {
+        cout << "YES!\n";
+        daco = 1;
+        break;
+      }
+    }
+
+    if (daco == 0)
+      cout << "NO! please try again!\n";
+
+  } while (daco == 0);
+}
+// câu 11: count flowers (quantity <5)
+void count_flowers_lowerquantity(Flower DS[], int N) {
+  int dem = 0;
+  for (int i = 0; i < N; i++) {
+    if (DS[i].quantity < 5)
+      dem++;
+  }
+
+  cout << "So hoa <5 la: " << dem << endl;
+}
 
 int main() {
 
@@ -226,6 +260,9 @@ int main() {
   cout << "Price   : " << x.price << endl;
   cout << "Quantity: " << x.quantity << endl;
   cout << "Type    : " << x.type << endl;
+
+  checkflower(flowers, N);
+  count_flowers_lowerquantity(flowers, N);
 
   return 0;
 }
