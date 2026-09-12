@@ -106,6 +106,16 @@ void max_quantity(Flower DS[], int N) {
     }
   }
 }
+// câu 5: tổng quantity
+void sum_quantity(Flower DS[], int N) {
+  int sum = 0;
+  for (int i = 0; i < N; i++) {
+    sum = sum + DS[i].quantity;
+  }
+
+  cout << "the total quantity: " << sum << endl;
+}
+
 
 int main() {
 
@@ -124,6 +134,8 @@ int main() {
   max_price(flowers, N);
   min_price(flowers, N);
   max_quantity(flowers, N);
+  sum_quantity(flowers,N);
+
 
   return 0;
 }
