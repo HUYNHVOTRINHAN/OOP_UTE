@@ -116,6 +116,15 @@ void sum_quantity(Flower DS[], int N) {
   cout << "the total quantity: " << sum << endl;
 }
 
+// câu 6: average price
+void average_price(Flower DS[], int N) {
+  float sum = 0;
+  for (int i = 0; i < N; i++) {
+    sum = sum + DS[i].price;
+  }
+
+  cout << "the average price: " << sum / N << endl;
+}
 
 int main() {
 
@@ -134,8 +143,8 @@ int main() {
   max_price(flowers, N);
   min_price(flowers, N);
   max_quantity(flowers, N);
-  sum_quantity(flowers,N);
-
+  sum_quantity(flowers, N);
+  average_price(flowers, N);
 
   return 0;
 }
