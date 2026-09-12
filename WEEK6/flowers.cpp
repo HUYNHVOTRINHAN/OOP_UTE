@@ -125,6 +125,29 @@ void average_price(Flower DS[], int N) {
 
   cout << "the average price: " << sum / N << endl;
 }
+// câu 7: đếm xem mỗi loại có bao nhiêu hoa
+void cout_eachtype(Flower DS[], int N) {
+  for (int i = 0; i < N; i++) {
+    int dadem = 0;
+    for (int j = 0; j < i; j++) {
+      if (strcmp(DS[i].type, DS[j].type) == 0) {
+        dadem = 1;
+        break;
+      }
+    }
+
+    if (dadem == 1)
+      continue;
+
+    int count = 0;
+    for (int j = 0; j < N; j++) {
+      if (strcmp(DS[j].type, DS[i].type) == 0) {
+        count++;
+      }
+    }
+    printf("%-20s : %d\n", DS[i].type, count);
+  }
+}
 
 int main() {
 
@@ -145,6 +168,7 @@ int main() {
   max_quantity(flowers, N);
   sum_quantity(flowers, N);
   average_price(flowers, N);
+  cout_eachtype(flowers, N);
 
   return 0;
 }
