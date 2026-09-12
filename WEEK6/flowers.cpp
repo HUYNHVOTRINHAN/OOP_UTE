@@ -219,7 +219,7 @@ void checkflower(Flower DS[], int N) {
 
   } while (daco == 0);
 }
-// câu 11: count flowers (quantity <5)
+/* // câu 11: count flowers (quantity <5)
 void count_flowers_lowerquantity(Flower DS[], int N) {
   int dem = 0;
   for (int i = 0; i < N; i++) {
@@ -228,7 +228,7 @@ void count_flowers_lowerquantity(Flower DS[], int N) {
   }
 
   cout << "So hoa <5 la: " << dem << endl;
-}
+} */
 
 int main() {
 
