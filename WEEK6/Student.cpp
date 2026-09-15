@@ -154,7 +154,19 @@ void second_highest(float a[], int n) {
   printf("Second Highest score: %.1f\n", maxnhi_mang(a, n));
   cout << endl << endl;
 }
-// câu 
+// câu 5
+void search_score(float a[], int n) {
+  float e;
+  cout << "Enter score to search: ";
+  cin >> e;
+  cout << endl;
+  cout << "Found at: \n";
+  for (int i = 0; i < n; i++) {
+    if (a[i] == e)
+      cout << "Student " << i + 1 << endl;
+  }
+  cout << endl << endl;
+}
 
 int main() {
 
@@ -172,6 +184,7 @@ int main() {
   count_score_range(a, n);
   above_average(a, n);
   second_highest(a,n);
+  search_score(a,n);
 
 
   return 0;
