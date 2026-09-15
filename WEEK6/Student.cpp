@@ -167,6 +167,19 @@ void search_score(float a[], int n) {
   }
   cout << endl << endl;
 }
+// câu 6
+void score_frequency(float a[], int n) {
+  float f;
+  cout << "Enter score: ";
+  cin >> f;
+  int dem3 = 0;
+  for (int i = 0; i < n; i++) {
+    if (a[i] == f)
+      dem3++;
+  }
+  cout << "Score " << f << " appears " << dem3 << " times" << endl;
+  cout << endl << endl;
+}
 
 int main() {
 
@@ -183,9 +196,9 @@ int main() {
   count_excellent(a, n);
   count_score_range(a, n);
   above_average(a, n);
-  second_highest(a,n);
-  search_score(a,n);
-
+  second_highest(a, n);
+  search_score(a, n);
+  score_frequency(a, n);
 
   return 0;
 }
