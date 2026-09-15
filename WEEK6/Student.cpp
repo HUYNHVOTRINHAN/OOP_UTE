@@ -195,6 +195,15 @@ void first_failing(float a[], int n) {
     cout << "All students pass!" << endl;
   cout << endl << endl;
 }
+// câu 8
+void compare_adjacent(float a[], int n) {
+  for (int i = 0; i < n - 1; i++) {
+    if (a[i + 1] > a[i])
+      cout << "Student " << i + 2 << " improved compared to Student " << i + 1
+           << endl;
+  }
+  cout << endl << endl;
+}
 
 int main() {
 
@@ -215,6 +224,7 @@ int main() {
   search_score(a, n);
   score_frequency(a, n);
   first_failing(a, n);
+  compare_adjacent(a, n);
 
   return 0;
 }
