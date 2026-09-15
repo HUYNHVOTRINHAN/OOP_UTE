@@ -381,8 +381,39 @@ void top3expesive_price(Flower DS[], int N) {
   }
 }
 
+// câu 18: find flowers with the name containing a keyword
+void keyword(Flower DS[], int N) {
+  char keyword[50];
 
+  cout << "Nhap keyword: ";
+  cin.getline(keyword, 50);
 
+  char keywordlower[50];
+  strcpy(keywordlower, keyword);
+
+  for (int i = 0; keywordlower[i] != '\0'; i++) {
+    keywordlower[i] = tolower(keywordlower[i]);
+  }
+
+  int found = 0;
+
+  for (int i = 0; i < N; i++) {
+    char namelower[50];
+    strcpy(namelower, DS[i].name);
+
+    for (int j = 0; namelower[j] != '\0'; j++) {
+      namelower[j] = tolower(namelower[j]);
+    }
+
+    if (strstr(namelower, keywordlower) != NULL) {
+      cout << DS[i].name << endl;
+      found = 1;
+    }
+  }
+
+  if (found == 0)
+    cout << " k tim thay flowers!" << endl;
+}
 
 int main() {
 
@@ -422,9 +453,7 @@ int main() {
   mostvalueflower(flowers, N);
   sort_name(flowers, N);
   top3expesive_price(flowers, N);
-  
-
-
+  keyword(flowers, N);
 
   return 0;
 }
