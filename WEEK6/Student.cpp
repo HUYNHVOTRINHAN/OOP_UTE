@@ -221,6 +221,50 @@ void longest_pass_streak(float a[], int n) {
 
   cout << "Longest pass streak: " << max_streak << " students" << endl << endl;
 }
+// câu 10
+void score_distribution(float a[], int n) {
+  int h[5] = {0};
+
+  for (int i = 0; i < n; i++) {
+    if (0 <= a[i] && a[i] < 5)
+      h[0]++;
+    else if (5 <= a[i] && a[i] < 6.5)
+      h[1]++;
+    else if (6.5 <= a[i] && a[i] < 8)
+      h[2]++;
+    else if (8 <= a[i] && a[i] < 9)
+      h[3]++;
+    else if (9 <= a[i] && a[i] <= 10)
+      h[4]++;
+  }
+
+  cout << "===== SCORE DISTRIBUTION =====\n";
+
+  cout << "0 - <5    : ";
+  for (int v = 1; v <= h[0]; v++)
+    cout << "*";
+  cout << "         " << h[0] << endl;
+
+  cout << "5 - <6.5  : ";
+  for (int v = 1; v <= h[1]; v++)
+    cout << "*";
+  cout << "         " << h[1] << endl;
+
+  cout << "6.5 - <8  : ";
+  for (int v = 1; v <= h[2]; v++)
+    cout << "*";
+  cout << "         " << h[2] << endl;
+
+  cout << "8 - <9    : ";
+  for (int v = 1; v <= h[3]; v++)
+    cout << "*";
+  cout << "         " << h[3] << endl;
+
+  cout << "9 - <10   : ";
+  for (int v = 1; v <= h[4]; v++)
+    cout << "*";
+  cout << "         " << h[4] << endl;
+}
 
 int main() {
 
@@ -243,6 +287,7 @@ int main() {
   first_failing(a, n);
   compare_adjacent(a, n);
   longest_pass_streak(a, n);
+  score_distribution(a, n);
 
   return 0;
 }
