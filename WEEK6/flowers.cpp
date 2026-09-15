@@ -415,6 +415,35 @@ void keyword(Flower DS[], int N) {
     cout << " k tim thay flowers!" << endl;
 }
 
+// câu 19: calculate avearage quantity by type
+void avg_quanntity_bytype(Flower DS[], int N) {
+  for (int i = 0; i < N; i++) {
+
+    int daco = 0;
+    for (int j = 0; j < i; j++) {
+      if (strcmp(DS[i].type, DS[j].type) == 0) {
+        daco = 1;
+        break;
+      }
+    }
+
+    if (daco == 1)
+      continue;
+
+    float avg = 0;
+    int sum = 0;
+    int count = 0;
+    for (int j = 0; j < N; j++) {
+      if (strcmp(DS[i].type, DS[j].type) == 0) {
+        sum = sum + DS[j].quantity;
+        count++;
+      }
+    }
+    avg = float(sum) / count;
+    cout << DS[i].type << ": type nay có avg: " << avg;
+  }
+}
+
 int main() {
 
   Flower flowers[20];
@@ -454,6 +483,7 @@ int main() {
   sort_name(flowers, N);
   top3expesive_price(flowers, N);
   keyword(flowers, N);
+  avg_quanntity_bytype(flowers, N);
 
   return 0;
 }
