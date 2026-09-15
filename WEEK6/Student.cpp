@@ -180,6 +180,21 @@ void score_frequency(float a[], int n) {
   cout << "Score " << f << " appears " << dem3 << " times" << endl;
   cout << endl << endl;
 }
+// câu 7
+void first_failing(float a[], int n) {
+  cout << "First failing student: " << endl;
+  int dem4 = 0;
+  for (int i = 0; i < n; i++) {
+    if (a[i] < 5) {
+      cout << "Student " << i + 1 << " : " << a[i] << endl;
+      dem4++;
+      break;
+    }
+  }
+  if (dem4 == 0)
+    cout << "All students pass!" << endl;
+  cout << endl << endl;
+}
 
 int main() {
 
@@ -199,6 +214,7 @@ int main() {
   second_highest(a, n);
   search_score(a, n);
   score_frequency(a, n);
+  first_failing(a, n);
 
   return 0;
 }
