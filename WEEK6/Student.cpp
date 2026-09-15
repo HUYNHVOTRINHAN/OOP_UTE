@@ -204,6 +204,23 @@ void compare_adjacent(float a[], int n) {
   }
   cout << endl << endl;
 }
+// câu 9
+void longest_pass_streak(float a[], int n) {
+  int max_streak = 0;
+  int current_streak = 0;
+
+  for (int i = 0; i < n; i++) {
+    if (a[i] >= 5) {
+      current_streak++;
+      if (current_streak > max_streak)
+        max_streak = current_streak;
+    } else {
+      current_streak = 0;
+    }
+  }
+
+  cout << "Longest pass streak: " << max_streak << " students" << endl << endl;
+}
 
 int main() {
 
@@ -225,6 +242,7 @@ int main() {
   score_frequency(a, n);
   first_failing(a, n);
   compare_adjacent(a, n);
+  longest_pass_streak(a, n);
 
   return 0;
 }
