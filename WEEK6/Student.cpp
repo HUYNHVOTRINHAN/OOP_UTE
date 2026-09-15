@@ -118,6 +118,22 @@ void count_excellent(float a[], int n) {
   cout << endl;
   cout << "Number of excellent students: " << dem1 << endl << endl;
 }
+// câu 2
+void count_score_range(float a[], int n) {
+  float c, d;
+  cout << "Enter minium score: ";
+  cin >> c;
+  cout << "Enter maxium score: ";
+  cin >> d;
+  cout << endl;
+
+  int dem2 = 0;
+  for (int i = 0; i < n; i++) {
+    if (c <= a[i] && a[i] <= d)
+      dem2++;
+  }
+  cout << "Students in range: " << dem2 << endl << endl;
+}
 
 int main() {
 
@@ -132,6 +148,7 @@ int main() {
   classification(a, n);
 
   count_excellent(a, n);
+  count_score_range(a, n);
 
   return 0;
 }
