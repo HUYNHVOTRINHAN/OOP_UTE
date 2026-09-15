@@ -318,6 +318,72 @@ void sort_name(Flower DS[], int N) {
   }
 }
 
+// câu 17: find top 3 most expensive flowers
+void top3expesive_price(Flower DS[], int N) {
+
+  float max1 = DS[0].price;
+  for (int i = 0; i < N; i++) {
+    if (DS[i].price > max1)
+      max1 = DS[i].price;
+  }
+
+  cout << " top 1: " << endl;
+  for (int i = 0; i < N; i++) {
+    if (DS[i].price == max1)
+      cout << DS[i].name << endl;
+  }
+
+  float max2;
+  int foundmax2 = 0;
+  for (int i = 0; i < N; i++) {
+    if (DS[i].price != max1) {
+      max2 = DS[i].price;
+      foundmax2 = 1;
+      break;
+    }
+  }
+  if (foundmax2 == 0)
+    return;
+  else {
+    for (int i = 0; i < N; i++) {
+      if (DS[i].price > max2 && DS[i].price != max1)
+        max2 = DS[i].price;
+    }
+    cout << " top 2: " << endl;
+    for (int i = 0; i < N; i++) {
+      if (DS[i].price == max2)
+        cout << DS[i].name << endl;
+    }
+
+    float max3;
+    int foundmax3 = 0;
+    for (int i = 0; i < N; i++) {
+      if (DS[i].price != max1 && DS[i].price != max2) {
+        max3 = DS[i].price;
+        foundmax3 = 1;
+        break;
+      }
+    }
+
+    if (foundmax3 == 0)
+      return;
+    else {
+      for (int i = 0; i < N; i++) {
+        if (DS[i].price > max3 && DS[i].price != max1 && DS[i].price != max2)
+          max3 = DS[i].price;
+      }
+      cout << " top 3: " << endl;
+      for (int i = 0; i < N; i++) {
+        if (DS[i].price == max3)
+          cout << DS[i].name << endl;
+      }
+    }
+  }
+}
+
+
+
+
 int main() {
 
   Flower flowers[20];
@@ -355,6 +421,10 @@ int main() {
   total_value(flowers, N);
   mostvalueflower(flowers, N);
   sort_name(flowers, N);
+  top3expesive_price(flowers, N);
+  
+
+
 
   return 0;
 }
