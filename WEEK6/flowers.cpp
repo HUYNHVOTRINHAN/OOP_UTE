@@ -483,7 +483,7 @@ int main() {
   sort_name(flowers, N);
   top3expesive_price(flowers, N);
   keyword(flowers, N);
-  avg_quanntity_bytype(flowers, N); //
+  avg_quanntity_bytype(flowers, N); ////
 
   return 0;
 }
