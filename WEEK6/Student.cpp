@@ -149,6 +149,12 @@ void above_average(float a[], int n) {
   }
   cout << endl << endl;
 }
+// câu 4
+void second_highest(float a[], int n) {
+  printf("Second Highest score: %.1f\n", maxnhi_mang(a, n));
+  cout << endl << endl;
+}
+// câu 
 
 int main() {
 
@@ -165,6 +171,8 @@ int main() {
   count_excellent(a, n);
   count_score_range(a, n);
   above_average(a, n);
+  second_highest(a,n);
+
 
   return 0;
 }
