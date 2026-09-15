@@ -134,6 +134,21 @@ void count_score_range(float a[], int n) {
   }
   cout << "Students in range: " << dem2 << endl << endl;
 }
+// câu 3
+void above_average(float a[], int n) {
+  float sum = 0;
+  for (int i = 0; i < n; i++) {
+    sum = sum + a[i];
+  }
+  float average = sum / n;
+  cout << "Average score: " << average << endl;
+  cout << "Student above average: " << endl;
+  for (int i = 0; i < n; i++) {
+    if (a[i] > average)
+      printf("Student %d: %.1f\n", i + 1, a[i]);
+  }
+  cout << endl << endl;
+}
 
 int main() {
 
@@ -149,6 +164,7 @@ int main() {
 
   count_excellent(a, n);
   count_score_range(a, n);
+  above_average(a, n);
 
   return 0;
 }
