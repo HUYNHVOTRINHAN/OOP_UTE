@@ -18,15 +18,30 @@ struct lab {
   char chucnang[20];
 };
 
-void showlabinfo() {
-  lab a;
+int j;
+lab a[100];
 
-  cout << "Ma phong: ";
-  cin.getline(a.maphong, 10);
+void getlabinfo(int &j) {
 
-  cout << "Chuc nang: ";
-  cin.getline(a.chucnang, 20);
+  cout << "Nhap so luong phong: ";
+  cin >> j;
+  cin.ignore();
+
+  for (int i = 0; i < j; i++) {
+    cout << "Ma phong " << i << ":";
+    cin.getline(a[i].maphong, 10);
+    cout << "Chuc nang: ";
+    cin.getline(a[i].chucnang, 20);
+  }
 }
+
+void showlapinfo() {
+  for (int i = 0; i < j; i++) {
+    cout << "Ma phong " << i << ":" << a[i].maphong << endl;
+    cout << "Chuc nang: " << a[i].chucnang << endl << endl;
+  }
+}
+
 struct account {
   char username[50];
   char password[50];
@@ -90,19 +105,7 @@ computer getcomputer_info2(const char a[]) {
   return x;
 }
 
-void getcomputer_info3() {
-  for (int i = 0; i < n; i++) {
-    cout << "May " << i << ":" << endl;
-    cout << "ID: " << DS[i].id << endl;
-    cout << "Name: " << DS[i].name << endl;
-    cout << "HDH: " << DS[i].hdh << endl;
-    cout << "Username: " << DS[i].username << endl;
-    cout << "Password: " << DS[i].password << endl;
-    cout << "Model: " << DS[i].model << endl;
-    cout << "Year: " << DS[i].year << endl;
-    cout << endl;
-  }
-}
+const computer *getcomputer_info3(const computer DS[]) { return DS; }
 
 void getcomputer_info4(const char a[]) {
   for (int i = 0; i < n; i++) {
@@ -119,7 +122,9 @@ void getcomputer_info4(const char a[]) {
 }
 
 int main() {
-  showlabinfo();
+
+  getlabinfo(j);
+  showlapinfo();
 
   cout << "Nhap so luong may tinh: ";
   cin >> n;
@@ -151,8 +156,22 @@ int main() {
     cout << "Khong tim thay!" << endl;
   }
 
-  getcomputer_info3();
-  getcomputer_info4(a);
+  cout << "\n=== DANH SACH TAT CA MAY TINH ===\n";
 
+  const computer *list = getcomputer_info3(DS);
+
+  for (int i = 0; i < n; i++) {
+    cout << "May " << i << ":" << endl;
+    cout << "ID: " << list[i].id << endl;
+    cout << "Name: " << list[i].name << endl;
+    cout << "HDH: " << list[i].hdh << endl;
+    cout << "Username: " << list[i].username << endl;
+    cout << "Password: " << list[i].password << endl;
+    cout << "Model: " << list[i].model << endl;
+    cout << "Year: " << list[i].year << endl;
+    cout << endl;
+  }
+
+  getcomputer_info4(a);
   return 0;
 }
