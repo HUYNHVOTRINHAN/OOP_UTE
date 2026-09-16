@@ -135,7 +135,7 @@ int main() {
 
   getcomputer_info1(a);
 
-  cout << "\nTim bang getcomputer_info2:\n";
+  cout << "\nTim bang getcomputer_info22:\n";
 
   computer x = getcomputer_info2(a);
 
