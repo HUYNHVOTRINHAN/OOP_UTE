@@ -44,9 +44,10 @@ struct thuvien {
     cout << "So luong sach    : ";
     cin >> numbooks;
     cin.ignore();
+    cout << endl;
 
     for (int i = 0; i < numbooks; i++) {
-      cout << "\n--- Nhap thong tin quyen sach thu " << i + 1 << " ---\n";
+      cout << "--- Nhap thong tin quyen sach thu " << i + 1 << " ---\n";
       books[i].inputbook();
     }
     cout << endl;
@@ -101,13 +102,15 @@ int main() {
   cout << "\n--- Nhap sach can them moi ---\n";
   newbook.inputbook();
   lib.addbook(newbook);
+  cout << endl;
 
   int searchid;
-  cout << "\nNhap ID sach muon tim (in truc tiep): ";
+  cout << "Nhap ID sach muon tim (in truc tiep): ";
   cin >> searchid;
   lib.printbookinfo(searchid);
+  cout << endl;
 
-  cout << "\nNhap ID sach muon lay thong tin (tra ve doi tuong): ";
+  cout << "Nhap ID sach muon lay thong tin (tra ve doi tuong): ";
   cin >> searchid;
   book foundbook = lib.getbookinfo(searchid);
   if (foundbook.id != -1) {
@@ -118,7 +121,7 @@ int main() {
   }
 
   book *allbooks = lib.getbooks();
-  cout << "\nThong tin sach dau tien trong danh sach:\n";
+  cout << "Thong tin sach dau tien trong danh sach:\n";
   allbooks[0].outputbook();
 
   return 0;
