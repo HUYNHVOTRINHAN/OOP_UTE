@@ -115,9 +115,8 @@ struct Restaurant {
         } else if (chon == 2) {
           cout << "Nhap so luong moi: ";
           cin >> foods[i].quantity;
-        } else {
+        } else
           cout << "Lua chon khong hop le!" << endl;
-        }
 
         cin.ignore();
         return;
@@ -271,126 +270,109 @@ struct Restaurant {
 };
 
 int main() {
-
   Restaurant restaurant;
 
-  int chon;
+  restaurant.input();
+  cout << endl;
 
-  do {
-    cout << "\n===== MENU =====" << endl;
-    cout << "1. Nhap thong tin cua hang" << endl;
-    cout << "2. Them mon an moi" << endl;
-    cout << "3. Hien thi danh sach mon an" << endl;
-    cout << "4. Tim mon an theo ma hoac ten" << endl;
-    cout << "5. Cap nhat gia hoac so luong mon an" << endl;
-    cout << "6. Tao don hang moi" << endl;
-    cout << "7. Kiem tra mon an va so luong" << endl;
-    cout << "8. Tinh tong tien don hang" << endl;
-    cout << "9. Hien thi danh sach don hang" << endl;
-    cout << "10. Tim don hang theo ma" << endl;
-    cout << "11. Cap nhat trang thai don hang" << endl;
-    cout << "12. Thong ke tong doanh thu" << endl;
-    cout << "0. Thoat" << endl;
-    cout << "Chon: ";
+  restaurant.output();
+  cout << endl;
 
-    cin >> chon;
+  int so_mon;
+  cout << "Nhap so luong mon an ban dau: ";
+  cin >> so_mon;
+  cin.ignore();
+
+  for (int i = 0; i < so_mon; i++) {
+    Food new_mon;
+
+    cout << "\nNhap mon an thu " << i + 1 << endl;
+
+    cout << "Nhap ma mon: ";
+    getline(cin, new_mon.id);
+
+    cout << "Nhap ten mon: ";
+    getline(cin, new_mon.name);
+
+    cout << "Nhap gia: ";
+    cin >> new_mon.price;
+
+    cout << "Nhap so luong: ";
+    cin >> new_mon.quantity;
     cin.ignore();
 
-    if (chon == 1) {
-      restaurant.input();
+    restaurant.addfood(new_mon);
+  }
+
+  cout << "\n===== DANH SACH MON AN =====\n";
+  restaurant.Ds_monan();
+
+  cout << "\n===== TIM MON AN =====\n";
+  restaurant.find_food_by_name_or_id();
+
+  cout << "\n===== CAP NHAT MON AN =====\n";
+  restaurant.update_food();
+
+  cout << "\n===== DANH SACH MON AN SAU KHI CAP NHAT =====\n";
+  restaurant.Ds_monan();
+
+  cout << "\n===== KIEM TRA MON AN =====\n";
+
+  string ma_mon;
+  int so_luong;
+
+  cout << "Nhap ma mon can kiem tra: ";
+  getline(cin, ma_mon);
+
+  cout << "Nhap so luong can kiem tra: ";
+  cin >> so_luong;
+  cin.ignore();
+
+  if (restaurant.check_food(ma_mon, so_luong)) {
+    cout << "Mon an ton tai va du so luong!" << endl;
+  }
+
+  cout << "\n===== TAO DON HANG =====\n";
+  restaurant.create_order();
+
+  cout << "\n===== DANH SACH DON HANG =====\n";
+  restaurant.Ds_donhang();
+
+  cout << "\n===== TIM DON HANG =====\n";
+  restaurant.find_order();
+
+  cout << "\n===== TINH TONG TIEN DON HANG =====\n";
+
+  string ma_don;
+  cout << "Nhap ma don hang: ";
+  getline(cin, ma_don);
+
+  bool found = false;
+
+  for (int i = 0; i < restaurant.orderCount; i++) {
+    if (toLower(restaurant.orders[i].id) == toLower(ma_don)) {
+
+      cout << "Tong tien: " << restaurant.total_order(restaurant.orders[i])
+           << endl;
+
+      found = true;
+      break;
     }
+  }
 
-    else if (chon == 2) {
-      Food new_mon;
+  if (found == false) {
+    cout << "Khong tim thay don hang!" << endl;
+  }
 
-      cout << "Nhap ma mon: ";
-      getline(cin, new_mon.id);
+  cout << "\n===== CAP NHAT TRANG THAI DON HANG =====\n";
+  restaurant.update_status();
 
-      cout << "Nhap ten mon: ";
-      getline(cin, new_mon.name);
+  cout << "\n===== DANH SACH DON HANG SAU KHI CAP NHAT =====\n";
+  restaurant.Ds_donhang();
 
-      cout << "Nhap gia: ";
-      cin >> new_mon.price;
-
-      cout << "Nhap so luong: ";
-      cin >> new_mon.quantity;
-      cin.ignore();
-
-      restaurant.addfood(new_mon);
-    }
-
-    else if (chon == 3) {
-      restaurant.Ds_monan();
-    }
-
-    else if (chon == 4) {
-      restaurant.find_food_by_name_or_id();
-    }
-
-    else if (chon == 5) {
-      restaurant.update_food();
-    }
-
-    else if (chon == 6) {
-      restaurant.create_order();
-    }
-
-    else if (chon == 7) {
-      string ma_mon;
-      int so_luong;
-
-      cout << "Nhap ma mon: ";
-      getline(cin, ma_mon);
-
-      cout << "Nhap so luong can kiem tra: ";
-      cin >> so_luong;
-      cin.ignore();
-
-      if (restaurant.check_food(ma_mon, so_luong)) {
-        cout << "Mon an ton tai va du so luong!" << endl;
-      }
-    }
-
-    else if (chon == 8) {
-      string ma_don;
-
-      cout << "Nhap ma don hang: ";
-      getline(cin, ma_don);
-
-      bool found = false;
-
-      for (int i = 0; i < restaurant.orderCount; i++) {
-        if (toLower(restaurant.orders[i].id) == toLower(ma_don)) {
-          cout << "Tong tien: " << restaurant.total_order(restaurant.orders[i])
-               << endl;
-
-          found = true;
-          break;
-        }
-      }
-
-      if (found == false) {
-        cout << "Khong tim thay don hang!" << endl;
-      }
-    }
-
-    else if (chon == 9) {
-      restaurant.Ds_donhang();
-    }
-
-    else if (chon == 10) {
-      restaurant.find_order();
-    }
-
-    else if (chon == 11) {
-      restaurant.update_status();
-    }
-
-    else if (chon == 12) {
-      cout << "Tong doanh thu: " << restaurant.total_revenue() << endl;
-    }
-
-  } while (chon != 0);
+  cout << "\n===== TONG DOANH THU =====\n";
+  cout << "Tong doanh thu cac don da hoan thanh: " << restaurant.total_revenue()
+       << endl;
 
   return 0;
 }
