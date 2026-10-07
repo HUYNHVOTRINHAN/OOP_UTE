@@ -30,7 +30,7 @@ public:
         second = 0;
     }
 
-    Date(int y, int m, int d, int h = 0, int mi = 0, int s = 0) {
+    Date(int y, int m, int d, int h, int mi, int s) {
         year = y;
         month = m;
         day = d;
