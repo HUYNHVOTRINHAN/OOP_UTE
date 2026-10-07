@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <vector>
 #include <cctype>
 
 using namespace std;
@@ -148,51 +147,59 @@ public:
     int getAge(int currentYear = 2026) const {
         return currentYear - birthdate.getYear();
     }
-
-    static Student getStudentInfo(const vector<Student>& list, string cccd) {
-        for (size_t i = 0; i < list.size(); i++) {
-            if (list[i].getCccd() == cccd) {
-                return list[i];
-            }
-        }
-        return Student();
-    }
-
-    static vector<Student> getStudents(const vector<Student>& list, string name) {
-        vector<Student> result;
-        for (size_t i = 0; i < list.size(); i++) {
-            if (toLower(list[i].getName()).find(toLower(name)) != string::npos) {
-                result.push_back(list[i]);
-            }
-        }
-        return result;
-    }
-
-    static vector<Student> getStudentsbyAge(const vector<Student>& list, int age, int currentYear = 2026) {
-        vector<Student> result;
-        for (size_t i = 0; i < list.size(); i++) {
-            if (list[i].getAge(currentYear) == age) {
-                result.push_back(list[i]);
-            }
-        }
-        return result;
-    }
 };
 
-Student getStudent(const vector<Student>& list, string cccd) {
-    return Student::getStudentInfo(list, cccd);
+Student getStudent(Student list[], int n, string cccd) {
+    for (int i = 0; i < n; i++) {
+        if (list[i].getCccd() == cccd) {
+            return list[i];
+        }
+    }
+    return Student();
 }
 
-Student getStudentInfo(const vector<Student>& list, string cccd) {
-    return Student::getStudentInfo(list, cccd);
+Student getStudentInfo(Student list[], int n, string cccd) {
+    return getStudent(list, n, cccd);
 }
 
-vector<Student> getStudents(const vector<Student>& list, string name) {
-    return Student::getStudents(list, name);
+Student* getStudents(Student list[], int n, string name, int &count) {
+    count = 0;
+    for (int i = 0; i < n; i++) {
+        if (toLower(list[i].getName()).find(toLower(name)) != string::npos) {
+            count++;
+        }
+    }
+
+    if (count == 0) return nullptr;
+
+    Student* result = new Student[count];
+    int idx = 0;
+    for (int i = 0; i < n; i++) {
+        if (toLower(list[i].getName()).find(toLower(name)) != string::npos) {
+            result[idx++] = list[i];
+        }
+    }
+    return result;
 }
 
-vector<Student> getStudentsbyAge(const vector<Student>& list, int age, int currentYear = 2026) {
-    return Student::getStudentsbyAge(list, age, currentYear);
+Student* getStudentsbyAge(Student list[], int n, int age, int &count, int currentYear = 2026) {
+    count = 0;
+    for (int i = 0; i < n; i++) {
+        if (list[i].getAge(currentYear) == age) {
+            count++;
+        }
+    }
+
+    if (count == 0) return nullptr;
+
+    Student* result = new Student[count];
+    int idx = 0;
+    for (int i = 0; i < n; i++) {
+        if (list[i].getAge(currentYear) == age) {
+            result[idx++] = list[i];
+        }
+    }
+    return result;
 }
 
 int main() {
@@ -202,21 +209,22 @@ int main() {
     Student student4("Nguyen Van An", "123 Vo Van Ngan", Date(2004, 5, 15, 8, 30, 0), "079204001234");
     Student student5("Tran Thi Huong", "Thu Duc", Date(2004, 9, 20, 14, 0, 0), "079204005678");
 
-    vector<Student> students;
-    students.push_back(student1);
-    students.push_back(student2);
-    students.push_back(student3);
-    students.push_back(student4);
-    students.push_back(student5);
+    Student students[100];
+    int n = 5;
+    students[0] = student1;
+    students[1] = student2;
+    students[2] = student3;
+    students[3] = student4;
+    students[4] = student5;
 
     cout << "===== DANH SACH SINH VIEN BAN DAU =====\n";
-    for (size_t i = 0; i < students.size(); i++) {
+    for (int i = 0; i < n; i++) {
         cout << "Sinh vien " << i + 1 << ":\n";
         students[i].displayStudentInfo();
     }
 
     cout << "\n===== TIM SINH VIEN THEO CCCD (079204001234) =====\n";
-    Student foundByCccd = getStudent(students, "079204001234");
+    Student foundByCccd = getStudent(students, n, "079204001234");
     if (!foundByCccd.getCccd().empty()) {
         foundByCccd.displayStudentInfo();
     } else {
@@ -224,15 +232,27 @@ int main() {
     }
 
     cout << "\n===== TIM SINH VIEN THEO TEN (\"huong\") =====\n";
-    vector<Student> foundByName = getStudents(students, "huong");
-    for (size_t i = 0; i < foundByName.size(); i++) {
-        foundByName[i].displayStudentInfo();
+    int countName = 0;
+    Student* foundByName = getStudents(students, n, "huong", countName);
+    if (foundByName != nullptr) {
+        for (int i = 0; i < countName; i++) {
+            foundByName[i].displayStudentInfo();
+        }
+        delete[] foundByName;
+    } else {
+        cout << "Khong tim thay sinh vien nao!\n";
     }
 
     cout << "\n===== TIM SINH VIEN THEO TUOI (22 TUOI) =====\n";
-    vector<Student> foundByAge = getStudentsbyAge(students, 22);
-    for (size_t i = 0; i < foundByAge.size(); i++) {
-        foundByAge[i].displayStudentInfo();
+    int countAge = 0;
+    Student* foundByAge = getStudentsbyAge(students, n, 22, countAge);
+    if (foundByAge != nullptr) {
+        for (int i = 0; i < countAge; i++) {
+            foundByAge[i].displayStudentInfo();
+        }
+        delete[] foundByAge;
+    } else {
+        cout << "Khong tim thay sinh vien nao!\n";
     }
 
     return 0;
