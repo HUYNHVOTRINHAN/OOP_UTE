@@ -4,6 +4,56 @@
 
 using namespace std;
 
+class Date {
+private:
+  int day;
+  int month;
+  int year;
+
+public:
+  Date() {
+    day = 1;
+    month = 1;
+    year = 2024;
+  }
+
+  Date(int d, int m, int y) {
+    day = d;
+    month = m;
+    year = y;
+  }
+
+  int getDay() const {
+    return day;
+  }
+
+  void setDay(int d) {
+    day = d;
+  }
+
+  int getMonth() const {
+    return month;
+  }
+
+  void setMonth(int m) {
+    month = m;
+  }
+
+  int getYear() const {
+    return year;
+  }
+
+  void setYear(int y) {
+    year = y;
+  }
+
+  void displayDate() const {
+    cout << (day < 10 ? "0" : "") << day << "/"
+         << (month < 10 ? "0" : "") << month << "/"
+         << year << endl;
+  }
+};
+
 class Category {
 private:
   int category_id;
@@ -201,6 +251,121 @@ vector<string> getDistinctColors(const vector<Fish>& fish_list) {
   return colors;
 }
 
+class FishShop {
+private:
+  int id;
+  string name;
+  string address;
+  string owner;
+  Date startdate;
+  vector<Category> categories;
+  vector<Fish> fishes;
+
+public:
+  FishShop() {
+    id = 0;
+    name = "";
+    address = "";
+    owner = "";
+    startdate = Date();
+  }
+
+  FishShop(int i, string n, string addr, string o, Date d) {
+    id = i;
+    name = n;
+    address = addr;
+    owner = o;
+    startdate = d;
+  }
+
+  int getId() const {
+    return id;
+  }
+
+  void setId(int i) {
+    id = i;
+  }
+
+  string getName() const {
+    return name;
+  }
+
+  void setName(string n) {
+    name = n;
+  }
+
+  string getAddress() const {
+    return address;
+  }
+
+  void setAddress(string addr) {
+    address = addr;
+  }
+
+  string getOwner() const {
+    return owner;
+  }
+
+  void setOwner(string o) {
+    owner = o;
+  }
+
+  Date getStartdate() const {
+    return startdate;
+  }
+
+  void setStartdate(Date d) {
+    startdate = d;
+  }
+
+  vector<Category> getCategories() const {
+    return categories;
+  }
+
+  void setCategories(const vector<Category>& cats) {
+    categories = cats;
+  }
+
+  vector<Fish> getFishes() const {
+    return fishes;
+  }
+
+  void setFishes(const vector<Fish>& f_list) {
+    fishes = f_list;
+  }
+
+  void addCategory(const Category& c) {
+    categories.push_back(c);
+  }
+
+  void addFish(const Fish& f) {
+    fishes.push_back(f);
+  }
+
+  void displayShopInfo() const {
+    cout << "\n================ FISH SHOP ================\n";
+    cout << "Shop ID   : " << id << endl;
+    cout << "Shop Name : " << name << endl;
+    cout << "Address   : " << address << endl;
+    cout << "Owner     : " << owner << endl;
+    cout << "Start Date: ";
+    startdate.displayDate();
+    cout << "-------------------------------------------\n";
+    cout << "Total Categories: " << categories.size() << endl;
+    for (size_t i = 0; i < categories.size(); i++) {
+      cout << "\n[Category " << i + 1 << "]\n";
+      categories[i].displayCategoryInfo();
+    }
+    cout << "-------------------------------------------\n";
+    cout << "Total Fishes    : " << fishes.size() << endl;
+    for (size_t i = 0; i < fishes.size(); i++) {
+      cout << "\n[Fish " << i + 1 << "]\n";
+      fishes[i].displayFishInfo();
+    }
+    cout << "===========================================\n";
+  }
+};
+
 int main() {
   Fish fish1;
   Fish fish2(101);
@@ -277,6 +442,64 @@ int main() {
   for (size_t i = 0; i < selected_fish.size(); i++) {
     selected_fish[i].displayFishInfo();
   }
+
+  FishShop fish_shop(1, "Thuy Cung Sai Gon", "123 Nguyen Trai, Q1, TP.HCM", "Huynh Vo Tri Nhan", Date(15, 8, 2020));
+
+  Category cat1(1, "Ca Canh Co Nho", "Cac loai ca bay mau, ca neon, de cham soc");
+  Category cat2(2, "Ca Thuy Sinh", "Cac loai ca phu hop ho cay thuy sinh, ho cong dong");
+  Category cat3(3, "Ca San Moi Va Phong Thuy", "Cac loai ca lon, mang lai tai loc phong thuy");
+  Category cat4(4, "Ca Bien", "Cac loai ca nuoc man, mau sac ruc ro");
+
+  fish_shop.addCategory(cat1);
+  fish_shop.addCategory(cat2);
+  fish_shop.addCategory(cat3);
+  fish_shop.addCategory(cat4);
+
+  fish_shop.addFish(Fish(1001, "Ca Bay Mau Rong Do", "Do", "Vay duoi to, boi linh hoat", 1));
+  fish_shop.addFish(Fish(1002, "Ca Bay Mau Blue Topaz", "Xanh duong", "Than phan anh sang xanh", 1));
+  fish_shop.addFish(Fish(1003, "Ca Bay Mau Full Gold", "Vang", "Mau vang anh kim toan than", 1));
+  fish_shop.addFish(Fish(1004, "Ca Bay Mau Dumbo Mosaic", "Nhieu mau", "Tai bboi to mau tim xanh", 1));
+  fish_shop.addFish(Fish(1005, "Ca Betta Halfmoon", "Do xanh", "Duoi xoe tron 180 do", 1));
+  fish_shop.addFish(Fish(1006, "Ca Betta Plakat", "Xanh duong", "Duoi ngan, boi nhanh, khoe", 1));
+  fish_shop.addFish(Fish(1007, "Ca Betta Koi Galaxy", "Nhieu mau", "Hoa tiet galaxy lap lanh", 1));
+  fish_shop.addFish(Fish(1008, "Ca Tram Do", "Do", "Kich thuoc ti hon, boi dan", 1));
+  fish_shop.addFish(Fish(1009, "Ca Soc Soc Tim", "Tim", "Than hinh phat sang duoi den", 1));
+  fish_shop.addFish(Fish(1010, "Ca Moly Trang", "Trang", "Dang tron de thuong, de de", 1));
+
+  fish_shop.addFish(Fish(2001, "Ca Neon Kim Cuong", "Bac", "Vach xanh phan quang lap lanh", 2));
+  fish_shop.addFish(Fish(2002, "Ca Neon Vua", "Do xanh", "Bung do toan phan, boi theo dan", 2));
+  fish_shop.addFish(Fish(2003, "Ca Neon Den", "Den", "Vach trang den noi bat", 2));
+  fish_shop.addFish(Fish(2004, "Ca Tam Giac", "Cam den", "Hinh tam giac mau den tren than", 2));
+  fish_shop.addFish(Fish(2005, "Ca Chuot Panda", "Trang den", "Hoa van mat giong gau truc", 2));
+  fish_shop.addFish(Fish(2006, "Ca Chuot Pygmy", "Xam", "Kich thuoc sieu nho, dang yeu", 2));
+  fish_shop.addFish(Fish(2007, "Ca Thuy Tinh Chot", "Trong suot", "Nhin thay ro xuong va noi tang", 2));
+  fish_shop.addFish(Fish(2008, "Ca Dia Bo Cau", "Trang do", "Hinh dang dia tron, hoa van dep", 2));
+  fish_shop.addFish(Fish(2009, "Ca Dia Lam", "Xanh lam", "Mau xanh lam toan than quy phai", 2));
+  fish_shop.addFish(Fish(2010, "Ca But Chi Do", "Do den", "Boi nhanh, don dep reu hai", 2));
+
+  fish_shop.addFish(Fish(3001, "Ca Rong Huyet Long", "Do", "Mang lai may man va quyen luc", 3));
+  fish_shop.addFish(Fish(3002, "Ca Rong Boi Dau", "Vang kim", "Vay vang lap lanh anh kim", 3));
+  fish_shop.addFish(Fish(3003, "Ca Rong Ngan Long", "Bac", "Than hinh dai mau bac uyen chuyen", 3));
+  fish_shop.addFish(Fish(3004, "Ca La Han Thai Silk", "Xanh bac", "Dau gu to, anh kim lap lanh", 3));
+  fish_shop.addFish(Fish(3005, "Ca La Han Kamfa", "Do vang", "Mat trang hoac vang, hoa van chu hoa", 3));
+  fish_shop.addFish(Fish(3006, "Ca Sam Black Diamond", "Den trang", "Cham bi trang tren nen den", 3));
+  fish_shop.addFish(Fish(3007, "Ca Sam Motoro", "Nau vang", "Hoa tiet hoa dong tien doc dao", 3));
+  fish_shop.addFish(Fish(3008, "Ca Ho Indo", "Vang den", "Soc vang den giong ho hung dung", 3));
+  fish_shop.addFish(Fish(3009, "Ca Tai Tuong Chau Phi", "Den do", "Thong minh, hoa tiet da cam", 3));
+  fish_shop.addFish(Fish(3010, "Ca Hong Ket King Kong", "Do", "Mau do ruc, mieng hinh trai tim", 3));
+
+  fish_shop.addFish(Fish(4001, "Ca He Nemo Ocellaris", "Cam trang", "Song cong sinh cung hai quy", 4));
+  fish_shop.addFish(Fish(4002, "Ca He Den Black Storm", "Den trang", "Hoa van tia chop trang den", 4));
+  fish_shop.addFish(Fish(4003, "Ca Blue Tang", "Xanh duong", "Ca Dory than hinh xanh duong noi bat", 4));
+  fish_shop.addFish(Fish(4004, "Ca Yellow Tang", "Vang", "Mau vang tuoi ruc ro toan than", 4));
+  fish_shop.addFish(Fish(4005, "Ca Banggai Cardinal", "Bac den", "Vay dai thanh thoat, cham bi trang", 4));
+  fish_shop.addFish(Fish(4006, "Ca Su Tu Bien", "Nau do", "Cac tia vay tua tia set doc dao", 4));
+  fish_shop.addFish(Fish(4007, "Ca Than Tien Hoang Gia", "Xanh vang", "Hoa van sang trong quy toc", 4));
+  fish_shop.addFish(Fish(4008, "Ca Bip Lua", "Do den", "Mau do cam ruc nhu ngon lua", 4));
+  fish_shop.addFish(Fish(4009, "Ca Bo Hom Vang", "Vang cham den", "Than hinh vuong vuc sieu dang yeu", 4));
+  fish_shop.addFish(Fish(4010, "Ca Cao Xanh Bien", "Xanh ngoc", "Mau xanh bien dam, boi nhanh", 4));
+
+  fish_shop.displayShopInfo();
 
   return 0;
 }
