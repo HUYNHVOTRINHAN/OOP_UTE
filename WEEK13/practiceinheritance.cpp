@@ -104,20 +104,16 @@ class FIEStudent : public student {
 
 
 int main() {
-    // === 1. Tao cac doi tuong People bang cac constructor khac nhau ===
-    people p1; // mac dinh
-    people p2("079123456789", "Nguyen Van A", "Ho Chi Minh"); // co tham so
+    people p1;
+    people p2("079123456789", "Nguyen Van A", "Ho Chi Minh");
 
-    // === 2. Tao cac doi tuong Student ===
-    student s1; // mac dinh (goi People())
-    student s2("079123456789", "Tran Thi B", "Ha Noi", "SV001", 2023); // co tham so
+    student s1;
+    student s2("079123456789", "Tran Thi B", "Ha Noi", "SV001", 2023);
 
-    // === 3. Tao cac doi tuong FIEStudent ===
-    FIEStudent f1; // mac dinh (goi Student() -> People())
+    FIEStudent f1;
     FIEStudent f2("079987654321", "Le Minh C", "Da Nang",
-                  "FIE2023001", 2023, 120); // co tham so
+                  "FIE2023001", 2023, 120);
 
-    // === 4. Hien thi thong tin cac doi tuong ===
     cout << "---- Thong tin doi tuong p1 (People - mac dinh) ----" << endl;
     p1.displayInfo();
     cout << endl;
